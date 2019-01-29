@@ -1,5 +1,5 @@
 $SecureStringPassword = ConvertTo-SecureString -String "<password>!" -AsPlainText -Force
-$azureAccountName ="b54431cd-0dea-4edf-bcc9-6f98baa4036d"
+$azureAccountName ="accountid"
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $SecureStringPassword)
 Add-AzureRmAccount -Credential $psCred -TenantId <tenantid> -ServicePrincipal
 
