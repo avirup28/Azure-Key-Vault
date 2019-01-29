@@ -1,13 +1,13 @@
-$SecureStringPassword = ConvertTo-SecureString -String "Winter2018!" -AsPlainText -Force
+$SecureStringPassword = ConvertTo-SecureString -String "<password>!" -AsPlainText -Force
 $azureAccountName ="b54431cd-0dea-4edf-bcc9-6f98baa4036d"
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $SecureStringPassword)
-Add-AzureRmAccount -Credential $psCred -TenantId 3596192b-fdf5-4e2c-a6fa-acb706c963d8 -ServicePrincipal
+Add-AzureRmAccount -Credential $psCred -TenantId <tenantid> -ServicePrincipal
 
 $Month = (Get-Date).Month
 $Day = (Get-Date).Day
 $Year = (Get-Date).Year
 
-$Certificates = Get-AzureKeyVaultCertificate -VaultName AZ-KV-CS-East-US-2 | select VaultName,Name,Expires
+$Certificates = Get-AzureKeyVaultCertificate -VaultName <KVname> | select VaultName,Name,Expires
 
 foreach ($Certificate in $Certificates) {
 
@@ -25,7 +25,7 @@ $Diff = $Cmonth - $Month
 
 if ( $Year -eq $Cyear -and $Diff -eq '1') { 
 
-Send-MailMessage -From CertificateExpiryNotification@pg.com -To avirup.dutta@mindtree.com -SmtpServer localhost -Subject "$C which is Stored in $V is going to Expire on $E"
+Send-MailMessage -From <ID> -To <ID>-SmtpServer localhost -Subject "$C which is Stored in $V is going to Expire on $E"
             
        }
 
